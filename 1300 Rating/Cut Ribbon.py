@@ -1,5 +1,14 @@
-a= 5
-b= 4
-c= 3
-s = max(a,b,c)
-print(s)
+n,a,b,c = map(int,input().split())
+ans = 0
+
+for x in range(4001):
+    for y in range(4001):
+        zc = n - ((x*a)+(y*b))
+
+        if zc < 0:
+            break
+        z = zc /c
+
+        if z == int(z):
+            ans = max(ans,int(z)+y+x)
+print(ans)

@@ -1,0 +1,34 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    int n, k;
+    cin >> n >> k;
+    vector<int> h(n);
+
+    for (int i = 0; i < n; ++i) {
+        cin >> h[i];
+    }
+
+    int current_sum = 0; // Initialize current_sum to zero
+    for (int i = 0; i < k; ++i) {
+        current_sum += h[i];
+    }
+
+    int min_sum = current_sum;
+    int min_index = 0;
+
+    for (int i = 1; i < n - k; ++i) {
+        current_sum = current_sum - h[i - 1] + h[k + i - 1];
+        if (current_sum < min_sum) {
+            min_sum = current_sum;
+            min_index = i;
+        }
+    }
+
+    cout << min_index + 1;
+
+    return 0;
+}
